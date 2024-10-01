@@ -3,37 +3,30 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git branch: 'main', url: 'https://github.com/carwoof444/jenkinstest'
+                git 'https://github.com/carwoof444/JenkinsTest'
             }
         }
         stage('Build') {
             steps {
-                // Compile the HelloWorld.java file
-                sh 'javac HelloWorld.java'
-            }
-        }
-        stage('Run') {
-            steps {
-                // Run the compiled Java class
-                sh 'java HelloWorld'
+                sh 'javac HelloWorld.java' // or use 'sh "javac HelloWorld.java"'
+                sh '& "C:\\Program Files\\Java\\jdk-22\\bin\\jar.exe" cvf HelloWorld.jar HelloWorld.class'
             }
         }
         stage('Dependency Check') {
             steps {
-                // Run OWASP Dependency Check analysis
-                dependencyCheck('**/*.jar') // Adjust the pattern if necessary
+                dependencyCheck analyze: true, 
+                                scanPath: '.', 
+                                failBuildOnCVSS: 7
             }
         }
         stage('Publish Dependency Check Report') {
             steps {
-                // Publish the Dependency Check report
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
         stage('Code Analysis') {
             steps {
-                // Run SonarQube analysis
-                sh 'sonar-scanner' // Ensure sonar-scanner is installed and configured
+                sh 'sonar-scanner'
             }
         }
     }
