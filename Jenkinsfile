@@ -14,11 +14,10 @@ pipeline {
         }
         stage('Dependency Check') {
             steps {
-                dependencyCheck([
-                    checkForUpdates: false,
-                    failBuildOnCVSS: 7,
-                    scanPath: '.'
-                ])
+                dependencyCheck(
+                    odcInstallation: 'Default', // Adjust as necessary for your installation
+                    failBuildOnCVSS: 7 // Try this if it works
+                )
             }
         }
         stage('Publish Dependency Check Report') {
