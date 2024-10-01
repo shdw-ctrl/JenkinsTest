@@ -8,16 +8,13 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'javac HelloWorld.java'
-                sh '& "C:\\Program Files\\Java\\jdk-22\\bin\\jar.exe" cvf HelloWorld.jar HelloWorld.class'
+                bat 'javac HelloWorld.java'
+                bat '"C:\\Program Files\\Java\\jdk-22\\bin\\jar.exe" cvf HelloWorld.jar HelloWorld.class'
             }
         }
         stage('Dependency Check') {
             steps {
-                dependencyCheck(
-                    odcInstallation: 'Default', // Adjust as necessary for your installation
-                    failBuildOnCVSS: 7 // Try this if it works
-                )
+                dependencyCheck additionalArguments: '--scan .', odcInstallation: 'Default'
             }
         }
         stage('Publish Dependency Check Report') {
@@ -27,7 +24,7 @@ pipeline {
         }
         stage('Code Analysis') {
             steps {
-                sh 'sonar-scanner'
+                bat 'sonar-scanner'
             }
         }
     }
