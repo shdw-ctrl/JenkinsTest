@@ -15,9 +15,9 @@ pipeline {
         stage('Dependency Check') {
             steps {
                 dependencyCheck([
+                    checkForUpdates: false,
                     failBuildOnCVSS: 7,
-                    scanPath: '.',
-                    active: true
+                    scanPath: '.'
                 ])
             }
         }
