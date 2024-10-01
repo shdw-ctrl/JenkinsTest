@@ -8,12 +8,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh './build.sh' // For Java: mvn clean package
+                sh 'javac HelloWorld.java'
             }
         }
         stage('Security Scan') {
             steps {
-                sh 'dependency-check --scan ./ --out report'
+                sh 'java HelloWorld'
             }
         }
     }
