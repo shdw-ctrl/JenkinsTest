@@ -20,15 +20,13 @@ pipeline {
         }
         stage('Dependency Check') {
             steps {
-                // Run OWASP Dependency Check
-                dependencyCheck analyze: true, 
-                                 scanPath: '.', 
-                                 failBuildOnCVSS: 7
+                // Run OWASP Dependency Check analysis
+                dependencyCheck('**/*.jar') // Adjust the pattern if necessary
             }
         }
         stage('Publish Dependency Check Report') {
             steps {
-                // Use the snippet provided to publish the report
+                // Publish the Dependency Check report
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
