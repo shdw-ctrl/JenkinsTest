@@ -14,12 +14,8 @@ pipeline {
         }
         stage('Dependency Check') {
             steps {
-                dependencyCheck additionalArguments: '--scan .', odcInstallation: 'Default'
-            }
-        }
-        stage('Publish Dependency Check Report') {
-            steps {
-                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+                dependencyCheck additionalArguments: '', odcInstallation: 'OWASP-DC'
+                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
             }
         }
         stage('Code Analysis') {
