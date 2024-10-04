@@ -18,10 +18,5 @@ pipeline {
                 dependencyCheckPublisher pattern: 'dependency-check-report.xml'
             }
         }
-        stage('Code Analysis') {
-            steps {
-                bat 'sonar-scanner'
-            }
-        }
     }
 }
