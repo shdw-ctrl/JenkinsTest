@@ -23,12 +23,12 @@ pipeline {
                 withSonarQubeEnv('SonarQube') {  // 'SonarQube' is the name of your server setup in Jenkins
                     sh '''
                         /opt/sonar-scanner/bin/sonar-scanner \
-                        -Dsonar.projectKey=Sparta-pipeline \  // Change this to your desired project key
+                        -Dsonar.projectKey=Sparta-pipeline \  
                         -Dsonar.sources=. \
-                        -Dsonar.java.binaries=./ \  // Specifies the location of compiled classes
+                        -Dsonar.java.binaries=./ \  
                         -Dsonar.dependencyCheck.reportPath=dependency-check-report.xml \
                         -Dsonar.host.url=http://localhost:9000 \
-                        -Dsonar.login=sqa_a00257ae7497505be00e567cbccdbe78882b4009 // Your SonarQube token
+                        -Dsonar.login=sqa_a00257ae7497505be00e567cbccdbe78882b4009 
                     '''
                 }
             }
