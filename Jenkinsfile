@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'javac HelloWorld.java'
-                sh '"C:\\Program Files\\Java\\jdk-22\\bin\\jar.exe" cvf HelloWorld.jar HelloWorld.class'
+                sh 'jar cvf HelloWorld.jar HelloWorld.class'
             }
         }
         stage('Dependency Check') {
