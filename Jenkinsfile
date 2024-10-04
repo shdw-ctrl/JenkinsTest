@@ -8,8 +8,8 @@ pipeline {
         }
         stage('Build') {
             steps {
-                bat 'javac HelloWorld.java'
-                bat '"C:\\Program Files\\Java\\jdk-22\\bin\\jar.exe" cvf HelloWorld.jar HelloWorld.class'
+                sh 'javac HelloWorld.java'
+                sh '"C:\\Program Files\\Java\\jdk-22\\bin\\jar.exe" cvf HelloWorld.jar HelloWorld.class'
             }
         }
         stage('Dependency Check') {
