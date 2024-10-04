@@ -28,7 +28,7 @@ pipeline {
                         -Dsonar.java.binaries=./ \  // Specifies the location of compiled classes
                         -Dsonar.dependencyCheck.reportPath=dependency-check-report.xml \
                         -Dsonar.host.url=http://localhost:9000 \
-                        -Dsonar.login=sqp_6af7202a9982ccecb9a0faa8176e5594f29a751e  // Your SonarQube token
+                        -Dsonar.login=sqa_a00257ae7497505be00e567cbccdbe78882b4009 // Your SonarQube token
                     '''
                 }
             }
