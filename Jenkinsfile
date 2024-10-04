@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/carwoof444/JenkinsTest'
+                git branch: 'main', git 'https://github.com/carwoof444/JenkinsTest'
             }
         }
         stage('Build') {
