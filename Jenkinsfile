@@ -23,7 +23,7 @@ pipeline {
                 withSonarQubeEnv('SonarQube') {  // 'SonarQube' is the name of your server setup in Jenkins
                     sh '''
                         /opt/sonar-scanner/bin/sonar-scanner \
-                        -Dsonar.projectKey=Sparta-pipeline \  
+                        -Dsonar.projectKey='Sparta-pipeline' \  
                         -Dsonar.sources=. \
                         -Dsonar.java.binaries=./ \  
                         -Dsonar.dependencyCheck.reportPath=dependency-check-report.xml \
